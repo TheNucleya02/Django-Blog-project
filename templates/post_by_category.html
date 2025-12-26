@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %}
+<main role="main" class="container p-0">
+  {% for feature in featured_posts %} {% if forloop.first %}
+  <div
+    class="featured-hero"
+    style="background-image: url({{ feature.featured_image.url }});"
+  >
+    <div class="featured-overlay"></div>
+    <div class="featured-content">
+      <div class="featured-badge">Featured Story</div>
+      <h1 class="featured-title">{{ feature.title }}</h1>
+      <p class="featured-description">
+        {{ feature.short_description | truncatewords:25 }}
+      </p>
+      <a href="#" class="btn-continue">Continue reading →</a>
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+
+  <section class="featured-section">
+    <h2 class="section-title">Category - {{ category }}</h2>
+    <div class="row">
+      {% if posts %} {% for feature in posts %}
+
+      <div class="col-md-6 mb-4">
+        <div class="post-card">
+          <div class="post-card-body">
+            <span class="post-category">{{feature.category}}</span>
+            <h3 class="post-title">{{feature.title}}</h3>
+            <div class="post-meta">
+              <span>{{feature.updated_at | timesince}} ago</span>
+              <span class="meta-separator">•</span>
+              <span>{{feature.author}}</span>
+            </div>
+            <p class="post-excerpt">
+              {{feature.short_description | truncatewords:20}}
+            </p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <h3 class="center">No posts Found</h3>
+      {% endif %}
+    </div>
+  </section>
+</main>
+{% endblock %}
