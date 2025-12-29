@@ -11,7 +11,7 @@
             <div class="featured-badge">Featured Story</div>
             <h1 class="featured-title">{{ feature.title }}</h1>
             <p class="featured-description">{{ feature.short_description | truncatewords:25 }}</p>
-            <a href="#" class="btn-continue">Continue reading →</a>
+            <a href="{% url 'blog' feature.slug %}" class="btn-continue">Continue reading →</a>
           </div>
         </div>
         {% endif %} 
@@ -33,7 +33,7 @@
                     <span>{{feature.author}}</span>
                   </div>
                   <p class="post-excerpt">{{feature.short_description | truncatewords:20}}</p>
-                  <a href="#" class="read-more">Read more →</a>
+                  <a href="{% url 'blog' feature.slug %}" class="read-more">Read more →</a>
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@
                   <span>by <a href="#" class="author-link">{{recent.author}}</a></span>
                 </div>
                 <p class="recent-post-excerpt">{{recent.short_description | truncatewords:20}}</p>
-                <a href="#" class="read-more">Read more →</a>
+                <a href="{% url 'blog' recent.slug%}" class="read-more">Read more →</a>
               </article>
               {% endfor %}
             </section>
@@ -63,20 +63,20 @@
 
           <aside class="col-md-4 blog-sidebar">
             <div class="sidebar-card about-card">
-              <h4 class="sidebar-title">About</h4>
+              <h4 class="sidebar-title">{{ about.heading }}</h4>
               <p class="sidebar-text">
-                Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras
-                mattis consectetur purus sit amet fermentum. Aenean lacinia
-                bibendum nulla sed consectetur.
+                {{ about.body }}
               </p>
             </div>
-
             <div class="sidebar-card social-card">
               <h4 class="sidebar-title">Follow Us</h4>
-              <ul class="social-links">
-                <li><a href="#" class="social-link">GitHub</a></li>
-                <li><a href="#" class="social-link">LinkedIn</a></li>
-              </ul>
+                <ul class="social-links">
+                  {% for f in follow %}
+                  <li>
+                    <a href="{{ f.platform_link }}" class="social-link">{{f.platform_name}}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
             </div>
           </aside>
         </div>

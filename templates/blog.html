@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<article class="single-post-container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <!-- Post Header -->
+      <div class="single-post-header">
+        <div class="breadcrumb-nav">
+          <a href="/" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a
+            href="{% url 'posts_by_category' blog.category.id %}"
+            class="breadcrumb-link"
+            >{{ blog.category.category_name }}</a
+          >
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Article</span>
+        </div>
+
+        <span class="single-post-category"
+          >{{ blog.category.category_name }}</span
+        >
+        <h1 class="single-post-title">{{blog.title}}</h1>
+
+        <div class="single-post-meta">
+          <div class="author-info">
+            <div class="author-avatar">
+              <img src="{% static 'images/hat.png' %}" alt="Author" />
+            </div>
+            <div class="author-details">
+              <a href="#" class="author-name">{{blog.author}}</a>
+              <div class="post-date-info">
+                <span>Published {{blog.updated_at | timesince }} ago</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-actions">
+            <button class="action-btn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 3.5L11.5 8.5H16.5L12.5 11.5L14 16.5L10 13.5L6 16.5L7.5 11.5L3.5 8.5H8.5L10 3.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+              Save
+            </button>
+            <button class="action-btn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M15 10H5M10 5V15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Image -->
+      <div class="single-post-featured-image">
+        <img src="{{ blog.featured_image.url }}" alt="Featured Image" />
+      </div>
+
+      <!-- Post Content -->
+      <div class="single-post-content">
+        <p class="lead-paragraph">{{blog.blog_body}}</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% endblock %}

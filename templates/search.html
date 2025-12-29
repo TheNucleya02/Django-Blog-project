@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h1>Search Results</h1>
+    {% if query %}
+    <p>Showing results for: <strong>{{ query }}</strong></p>
+    {% endif %} {% if posts %} {% for post in posts %}
+    <div class="blog-post mb-4">
+      <h2 class="blog-post-title">
+        <a href="{% url 'blog' post.slug %}">{{ post.title }}</a>
+      </h2>
+      <p class="blog-post-meta">
+        {{ post.created_at|date:"M d, Y" }} by <a href="#">{{ post.author }}</a>
+      </p>
+      <p>{{ post.short_description }}</p>
+      <a href="{% url 'blog' post.slug %}" class="btn btn-primary">Read More</a>
+    </div>
+    {% endfor %} {% else %} {% if query %}
+    <p>No results found for "{{ query }}".</p>
+    {% else %}
+    <p>Please enter a search term.</p>
+    {% endif %} {% endif %}
+  </div>
+  <aside class="col-md-4 blog-sidebar">
+    <div class="sidebar-card about-card">
+      <h4 class="sidebar-title">{{ about.heading }}</h4>
+      <p class="sidebar-text">{{ about.body }}</p>
+    </div>
+    <div class="sidebar-card social-card">
+      <h4 class="sidebar-title">Follow Us</h4>
+      <ul class="social-links">
+        {% for f in follow %}
+        <li>
+          <a href="{{ f.platform_link }}" class="social-link"
+            >{{f.platform_name}}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
+{% endblock %}
