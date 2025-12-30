@@ -36,8 +36,12 @@
                 <button type="submit" class="btn btn-primary">Go</button>
               </form>
             </div>
-            <a class="btn btn-sm btn-login mr-2" href="#">Login</a>
-            <a class="btn btn-sm btn-register" href="#">Register</a>
+            {% if not user.is_authenticated %}
+            <a class="btn btn-sm btn-login mr-2" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-sm btn-register" href="{% url 'register' %}">Register</a>
+            {% else %}
+            <a class="btn btn-sm btn-danger mr-2" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
           </div>
         </div>
       </header>
