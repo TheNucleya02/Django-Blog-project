@@ -14,12 +14,12 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
     
+
+    
 STATUS_CHOICES = (
     ("Draft", 'Draft'),
     ("Published", 'Published')
 )
-
-
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=150, unique=True, blank=True)

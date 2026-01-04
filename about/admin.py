@@ -5,7 +5,7 @@ from .models import About, Follow
 class MyAdmin(admin.ModelAdmin):
      def has_add_permission(self, request, obj=None):
         # count = About.objects.all().count()
-        # if count == 0:
+        # if count >= 0:
         #     return True
         return False
 
