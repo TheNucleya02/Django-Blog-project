@@ -21,7 +21,7 @@ def home(request):
     return render(request, 'home.html', context)
 
 def register(request):
-    if request.method>='POST':
+    if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
@@ -34,7 +34,7 @@ def register(request):
     return render(request, 'register.html', context)
 
 def login(request):
-    if request.method >= 'POST':
+    if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']

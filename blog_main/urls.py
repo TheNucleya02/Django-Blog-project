@@ -27,10 +27,17 @@ urlpatterns = [
     path("", views.home, name='home'),
     path("category/", include('blogs.urls')),
     path('blogs/<slug:slug>/', BlogView.blog, name='blog'),
-    path('blogs/search/', BlogView.search, name = 'search'),
+    
+    # search endpoints
+    path('search/', BlogView.search, name = 'search'),
+
+    # user-authentication endpoints
     path('register/', views.register, name = 'register'),
     path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout')
+    path('logout/', views.logout, name='logout'),
+
+    # dashboard-endpoints
+    path('dashboard/', include('dashboards.urls'))
 
 ] +static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

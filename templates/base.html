@@ -15,6 +15,8 @@
       rel="stylesheet"
     />
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
+    {% block extra_css %}
+    {% endblock %}
   </head>
   <body>
     <div class="container">
@@ -40,6 +42,7 @@
             <a class="btn btn-sm btn-login mr-2" href="{% url 'login' %}">Login</a>
             <a class="btn btn-sm btn-register" href="{% url 'register' %}">Register</a>
             {% else %}
+            <a class="btn btn-sm btn-login mr-2" href="{% url 'dashboard' %}">Dashboard</a>
             <a class="btn btn-sm btn-danger mr-2" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           </div>
