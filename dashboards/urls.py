@@ -12,6 +12,11 @@ urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('categories/add', views.categoriesAdd, name='categories_add'),
     path('categories/edit/<int:pk>', views.categoriesEdit, name='categories_edit'),
-    path('categories/delete/<int:pk>', views.categoriesDelete, name='categories_delete')
+    path('categories/delete/<int:pk>', views.categoriesDelete, name='categories_delete'),
+
+    path('users', views.users, name='users'),
+    path('users/add', views.usersAdd, name='add_users'),
+    path('users/edit/<int:pk>', views.usersEdit, name='edit_users'),
+    path('users/delete/<int:pk>', views.usersDelte, name='delete_users')
 
 ]

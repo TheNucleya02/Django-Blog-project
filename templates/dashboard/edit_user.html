@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
+{% endblock %} {% block content %}
+<!-- Left sidebar -->
+<div class="dashboard-container">
+  <div class="row no-gutters">
+    {% include 'dashboard/sidebar.html' %}
+    <main class="col-md-9 dashboard-main">
+      <div class="dashboard-content">
+        {% load crispy_forms_tags %}
+
+        <h2 class="section-title">Edit User</h2>
+
+        <form action="" method="POST" style="width: 500px; margin: auto">
+          {% csrf_token %} {{form | crispy}}
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+{% endblock %}

@@ -12,6 +12,32 @@
       </svg>
       <span>Dashboard</span>
     </a>
+    {% if perms.auth.view_user %}
+    <a href="{% url 'users' %}" class="sidebar-nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <!-- Head -->
+      <circle
+        cx="12"
+        cy="8"
+        r="4"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+        
+      <!-- Body -->
+      <path
+        d="M4 20c0-4 4-6 8-6s8 2 8 6"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      </svg>
+      <span>Users</span>
+    </a>
+    {% endif %}
     <a href="{% url 'my_posts' %}" class="sidebar-nav-item">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path
