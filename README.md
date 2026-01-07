@@ -6,7 +6,8 @@ This project simulates a **production-style blogging system** with multiple user
 
 ---
 
-# Deployment Link - TheNucleya02.pythonanywhere.com
+# Deployment Link - 
+TheNucleya02.pythonanywhere.com
 
 ## 🚀 Features
 
